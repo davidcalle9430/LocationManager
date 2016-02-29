@@ -35,7 +35,7 @@ public class LocationContract {
         public final static String TABLE_NAME = "location";
         public final static String COLUMN_LOCATION_NAME = "location_name";
         public final static String COLUMN_COORD_LAT = "coord_lat";
-        public final static String COLUMN_COOD_LON = "coord:lon";
+        public final static String COLUMN_COOD_LON = "coord_lon";
 
         public static Uri buildLocationUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);

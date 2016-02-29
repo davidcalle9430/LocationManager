@@ -3,6 +3,8 @@ package com.calle.david.locationmanager.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import com.calle.david.locationmanager.data.LocationContract.LocationEntry;
 /**
  * Created by david on 2/28/2016.
@@ -30,8 +32,9 @@ public class LocationDBHelper extends SQLiteOpenHelper {
                 + LocationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + LocationEntry.COLUMN_LOCATION_NAME + " TEXT NOT NULL, "
                 + LocationEntry.COLUMN_COOD_LON + " REAL NOT NULL, "
-                + LocationEntry.COLUMN_COORD_LAT + "REAL NOT NULL"
+                + LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL"
                 + ");";
+        Log.v("Base de datos", SQL_CREATE_LOCATION_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
     }
 
