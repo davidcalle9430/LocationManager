@@ -31,11 +31,22 @@ public class LocationContract {
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_LOCATION;
 
 
-
+        /**
+         * nombres de la tabla como de las columnas
+         */
         public final static String TABLE_NAME = "location";
         public final static String COLUMN_LOCATION_NAME = "location_name";
         public final static String COLUMN_COORD_LAT = "coord_lat";
         public final static String COLUMN_COOD_LON = "coord_lon";
+
+        /*
+        * indices de las columnas
+         */
+        public final static Integer COL_ID = 0;
+        public final static Integer COL_NAME = 1;
+        public final static Integer COL_LAT = 2;
+        public final static Integer COL_LON = 3;
+
 
         public static Uri buildLocationUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
