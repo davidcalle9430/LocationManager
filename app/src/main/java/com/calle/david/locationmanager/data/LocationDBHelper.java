@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import com.calle.david.locationmanager.data.LocationContract.InformationEntry;
 
 import com.calle.david.locationmanager.data.LocationContract.LocationEntry;
 /**
@@ -12,7 +13,7 @@ import com.calle.david.locationmanager.data.LocationContract.LocationEntry;
 public class LocationDBHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     static final String DATABASE_NAME = "location.db";
 
@@ -32,10 +33,20 @@ public class LocationDBHelper extends SQLiteOpenHelper {
                 + LocationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + LocationEntry.COLUMN_LOCATION_NAME + " TEXT NOT NULL, "
                 + LocationEntry.COLUMN_COOD_LON + " REAL NOT NULL, "
-                + LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL"
+                + LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL, "
+                + LocationEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, "
+                + LocationEntry.COLUMN_RADIO + " REAL NOT NULL "
                 + ");";
-        Log.v("Base de datos", SQL_CREATE_LOCATION_TABLE);
+        final String SQL_CREATE_INFORMATION_TABLE = "CREATE TABLE " + InformationEntry.TABLE_NAME + " ("
+                + InformationEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + InformationEntry.COLUMN_LOC_KEY + " INTEGER NOT NULL, "
+                + InformationEntry.COLUMN_KEY + " TEXT NOT NULL, "
+                + InformationEntry.COLUMN_VALUE + " TEXT NOT NULL, "
+                + "FOREIGN KEY ( " + InformationEntry.COLUMN_LOC_KEY + " ) REFERENCES " + LocationEntry.TABLE_NAME + "( "+ LocationEntry._ID + " )"
+                + ");";
         sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
+        Log.v("Database", SQL_CREATE_INFORMATION_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_INFORMATION_TABLE);
     }
 
     /**
@@ -48,6 +59,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + LocationEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + InformationEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

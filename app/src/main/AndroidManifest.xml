@@ -20,7 +20,12 @@
             android:name=".data.LocationProvider"
             android:authorities="com.movil.sagrado.corazon"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
+
+        <activity
+            android:name=".DetailView"
+            android:label="@string/title_activity_detail_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

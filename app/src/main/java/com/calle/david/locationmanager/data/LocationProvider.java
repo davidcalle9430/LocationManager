@@ -31,14 +31,11 @@ public class LocationProvider extends ContentProvider {
 
 
     static UriMatcher buildUriMatcher() {
-        // 1) The code passed into the constructor represents the code to return for the root
-        // URI.  It's common to use NO_MATCH as the code for this case. Add the constructor below.
+
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-        // 2) Use the addURI function to match each of the types.  Use the constants from
-        // WeatherContract to help define the types to the UriMatcher.
         uriMatcher.addURI(LocationContract.CONTENT_AUTHORITY, LocationContract.PATH_LOCATION, LOCATION);
-        // 3) Return the new matcher!
+         // falta aniadir las URIs Faltantes
         return uriMatcher;
     }
 
@@ -107,6 +104,9 @@ public class LocationProvider extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
     }
+
+
+
 
 
 }
