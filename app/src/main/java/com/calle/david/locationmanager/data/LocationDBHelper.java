@@ -13,7 +13,7 @@ import com.calle.david.locationmanager.data.LocationContract.LocationEntry;
 public class LocationDBHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 6;
 
     static final String DATABASE_NAME = "location.db";
 
@@ -44,9 +44,8 @@ public class LocationDBHelper extends SQLiteOpenHelper {
                 + InformationEntry.COLUMN_VALUE + " TEXT NOT NULL, "
                 + "FOREIGN KEY ( " + InformationEntry.COLUMN_LOC_KEY + " ) REFERENCES " + LocationEntry.TABLE_NAME + "( "+ LocationEntry._ID + " )"
                 + ");";
-        sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
-        Log.v("Database", SQL_CREATE_INFORMATION_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_INFORMATION_TABLE);
+        sqLiteDatabase.execSQL( SQL_CREATE_LOCATION_TABLE );
+        sqLiteDatabase.execSQL( SQL_CREATE_INFORMATION_TABLE );
     }
 
     /**

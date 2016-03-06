@@ -68,12 +68,20 @@ public class LocationContract {
         public final static String COLUMN_KEY = "key";
         public final static String COLUMN_VALUE = "value";
 
+        public final static Integer COL_ID = 0;
+        public final static Integer COL_KEY = 1;
+        public final static Integer COL_VALUE = 2;
+
         public static Uri buildInformationUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
         public static Uri buildInformationLocation(String locationSetting) {
             return CONTENT_URI.buildUpon().appendPath(locationSetting).build();
+        }
+
+        public static Integer getLocationFromURI( Uri uri){
+            return Integer.parseInt(uri.getPathSegments().get(1)); // ejemplo de URI  /information/1
         }
 
     }
