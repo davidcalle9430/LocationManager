@@ -49,7 +49,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
                  LocationContract.SituationEntry.COLUMN_SITUATION_NAME  +" TEXT PRIMARY KEY NOT NULL );";
 
         final String SQL_CREATE_SITUATION_X_LOCATION_TABLE = "CREATE TABLE " + LocationContract.SituationXLocationEntry.TABLE_NAME + " ( " +
-                LocationContract.SituationXLocationEntry._ID +" INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, " +
+                LocationContract.SituationXLocationEntry._ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 LocationContract.SituationXLocationEntry.COLUMN_LOCATION_KEY + " INTEGER NOT NULL, " +
                 LocationContract.SituationXLocationEntry.COLUMN_SITUATION_NAME + " TEXT NOT NULL, " +
                 "FOREIGN KEY ( " + LocationContract.SituationXLocationEntry.COLUMN_LOCATION_KEY + ") REFERENCES " + LocationEntry.TABLE_NAME +"(" + ( LocationEntry._ID ) + ") , " +

@@ -60,22 +60,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Cursor cursor = getContentResolver().query( LocationEntry.CONTENT_URI, null, null, null, null );
+        Cursor cursor = getContentResolver().query(LocationEntry.CONTENT_URI, null, null, null, null);
         mAdapter = new LocationAdapter( getApplicationContext(), cursor, 0 );
         listView = (ListView) findViewById( R.id.view_activity_main );
-        listView.setAdapter( mAdapter );
-        ContentValues ingenieria = buildLocation("Edificio de Ingenieriia", "En este edificio estan las facultades de ingenieria industrial," +
-                        "  ingenieria de sistemas, ingenieria civil e ingenieria electronica. Actualmente se encuentra en proceso de expansion para los laboratorios",
+        listView.setAdapter(mAdapter);
+
+    }
+}
+/*
+ContentValues ingenieria = buildLocation("Tunel","Todos comen ahi, es deamisado caro, DEMASIADO",
                 1.1, 2.2, 5.0);
 
         getContentResolver().insert( LocationEntry.CONTENT_URI , ingenieria );
-        ContentValues contentValues = buildInformation("Ruta", "Actualmente no se puede entrar por la iglesia", 1);
-        ContentValues contentValues2 = buildInformation("Camino Alterno", "Entrar por el parque", 1);
-        ContentValues contentValues3 = buildInformation("Camino Alterno", "Dar la vuelta por el edificio de parqueaderos", 1);
+        ContentValues contentValues = buildInformation("Ruta", "Siempre esta lleno", 1);
+        ContentValues contentValues2 = buildInformation("Camino Alterno", "NO salir al almuerzo", 1);
+        ContentValues contentValues3 = buildInformation("Camino Alterno", "jamas en la vida", 1);
 
         getContentResolver().insert( InformationEntry.CONTENT_URI  , contentValues);
-        getContentResolver().insert( InformationEntry.CONTENT_URI , contentValues2);
-        getContentResolver().insert( InformationEntry.CONTENT_URI , contentValues3);
-    }
-}
+        getContentResolver().insert(InformationEntry.CONTENT_URI, contentValues2);
+        getContentResolver().insert(InformationEntry.CONTENT_URI, contentValues3);
+ */
+
+
 
