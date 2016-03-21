@@ -64,9 +64,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new LocationAdapter( getApplicationContext(), cursor, 0 );
         listView = (ListView) findViewById( R.id.view_activity_main );
         listView.setAdapter( mAdapter );
-    }
-}
-  /*  ContentValues ingenieria = buildLocation("Edificio de Ingenieriia", "En este edificio estan las facultades de ingenieria industrial," +
+        ContentValues ingenieria = buildLocation("Edificio de Ingenieriia", "En este edificio estan las facultades de ingenieria industrial," +
                         "  ingenieria de sistemas, ingenieria civil e ingenieria electronica. Actualmente se encuentra en proceso de expansion para los laboratorios",
                 1.1, 2.2, 5.0);
 
@@ -78,5 +76,6 @@ public class MainActivity extends AppCompatActivity {
         getContentResolver().insert( InformationEntry.CONTENT_URI  , contentValues);
         getContentResolver().insert( InformationEntry.CONTENT_URI , contentValues2);
         getContentResolver().insert( InformationEntry.CONTENT_URI , contentValues3);
+    }
+}
 
-*/
