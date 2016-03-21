@@ -25,6 +25,9 @@ public class LocationProvider extends ContentProvider {
     private static final int LOCATION = 300;
     private static final int INFORMATION = 101;
     private static final int INFORMATION_WITH_LOCATION = 102;
+    private static final int SITUATION = 400;
+    private static final int SITUATION_WITH_LOCATION = 401;
+    private static final int SITUATION_X_LOCATION = 500;
 
     private LocationDBHelper mOpenHelper;
 
@@ -44,6 +47,15 @@ public class LocationProvider extends ContentProvider {
         );
     }
 
+    private static final SQLiteQueryBuilder sLocationSituationQueryBuilder;
+    static {
+        sLocationSituationQueryBuilder = new SQLiteQueryBuilder();
+        sLocationSituationQueryBuilder.setTables("" +
+                LocationEntry.TABLE_NAME + " INNER JOIN " + LocationContract.SituationXLocationEntry.TABLE_NAME
+                + " ON " + LocationEntry.TABLE_NAME + "." + LocationEntry._ID
+                + " = " + LocationContract.SituationXLocationEntry.TABLE_NAME + "." + LocationContract.SituationXLocationEntry.COLUMN_LOCATION_KEY        );
+    }
+
 
 
     private static final String sLocationInformationSelection =
@@ -56,10 +68,11 @@ public class LocationProvider extends ContentProvider {
 
         UriMatcher uriMatcher = new UriMatcher( UriMatcher.NO_MATCH );
 
-        uriMatcher.addURI(LocationContract.CONTENT_AUTHORITY, LocationContract.PATH_LOCATION, LOCATION);
-         // falta aniadir las URIs Faltantes
-        uriMatcher.addURI(LocationContract.CONTENT_AUTHORITY, LocationContract.PATH_INFORMATION, INFORMATION );
-        uriMatcher.addURI(LocationContract.CONTENT_AUTHORITY, LocationContract.PATH_INFORMATION + "/*", INFORMATION_WITH_LOCATION);
+        uriMatcher.addURI( LocationContract.CONTENT_AUTHORITY , LocationContract.PATH_LOCATION, LOCATION );
+        uriMatcher.addURI( LocationContract.CONTENT_AUTHORITY , LocationContract.PATH_INFORMATION, INFORMATION );
+        uriMatcher.addURI( LocationContract.CONTENT_AUTHORITY , LocationContract.PATH_INFORMATION + "/*", INFORMATION_WITH_LOCATION );
+        uriMatcher.addURI( LocationContract.CONTENT_AUTHORITY ,  LocationContract.PATH_SITUATION , SITUATION );
+        uriMatcher.addURI( LocationContract.CONTENT_AUTHORITY , LocationContract.PATH_SITUATION_LOCATION , SITUATION_X_LOCATION );
         return uriMatcher;
     }
 
@@ -73,7 +86,7 @@ public class LocationProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         Cursor retCursor = null ;
-        switch (sUriMatcher.match(uri)){
+        switch ( sUriMatcher.match( uri ) ){
             case LOCATION:{
                 retCursor = null;
                 retCursor = sLocationSettingQueryBuilder.query( mOpenHelper.getReadableDatabase(),
@@ -103,9 +116,30 @@ public class LocationProvider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            }case SITUATION: {
+                retCursor = mOpenHelper.getReadableDatabase().query(
+                        LocationContract.SituationEntry.TABLE_NAME ,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }case SITUATION_X_LOCATION:{
+                retCursor = sLocationSituationQueryBuilder.query( mOpenHelper.getReadableDatabase(),
+                        projection,
+                        selection , // con esto hago el join entre ambas tablas
+                        selectionArgs,
+                        null, // group by
+                        null, // having
+                        sortOrder
+                );
+                break;
             }
         }
-        retCursor.setNotificationUri(getContext().getContentResolver(), uri);
+        retCursor.setNotificationUri( getContext().getContentResolver() , uri );
         return retCursor;
     }
 
@@ -119,6 +153,8 @@ public class LocationProvider extends ContentProvider {
                 return InformationEntry.CONTENT_TYPE;
             case INFORMATION_WITH_LOCATION:
                 return InformationEntry.CONTENT_TYPE;
+            case SITUATION:
+                return LocationContract.SituationEntry.CONTENT_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI: "+ uri);
         }
@@ -130,7 +166,7 @@ public class LocationProvider extends ContentProvider {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         Uri returnUri;
-        switch (match){
+        switch(match){
             case LOCATION:{
                 long _id = db.insert(LocationContract.LocationEntry.TABLE_NAME, null, values);
                 if( _id > 0){
@@ -141,6 +177,18 @@ public class LocationProvider extends ContentProvider {
                 break;
             }case INFORMATION:{
                 long _id = db.insert( InformationEntry.TABLE_NAME , null, values);
+                if( _id > 0){
+                    returnUri = LocationContract.LocationEntry.buildLocationUri(_id);
+                }else {
+                    throw new SQLException("Error al insertar la fila de informacion");
+                }
+                break;
+            }case SITUATION: {
+                db.insertOrThrow( LocationContract.SituationEntry.TABLE_NAME , null , values);
+                returnUri = LocationContract.LocationEntry.buildLocationUri(0);
+                break;
+            }case SITUATION_X_LOCATION:{
+                long _id = db.insert(LocationContract.SituationXLocationEntry.TABLE_NAME , null, values);
                 if( _id > 0){
                     returnUri = LocationContract.LocationEntry.buildLocationUri(_id);
                 }else {

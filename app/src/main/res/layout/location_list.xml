@@ -8,7 +8,7 @@
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         >
         <ImageView
@@ -17,7 +17,7 @@
             android:src="@drawable/pointer"
             android:id="@+id/location_item_image"
             android:layout_alignParentTop="true"
-            app:layout_widthPercent="30%"
+            app:layout_widthPercent="20%"
             android:scaleType="centerCrop"
            />
         <LinearLayout
@@ -31,8 +31,8 @@
                 android:id="@+id/location_name"
                 android:textColor="@color/colorPrimaryDark"
                 android:text="JAJAJA"
-                android:textSize="25dp"
-                app:layout_widthPercent="70%"
+                android:textSize="18dp"
+                app:layout_widthPercent="80%"
                />
             <TextView
                 android:layout_width="match_parent"

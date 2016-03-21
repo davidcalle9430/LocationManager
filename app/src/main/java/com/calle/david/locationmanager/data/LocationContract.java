@@ -23,7 +23,7 @@ public class LocationContract {
     public static final String PATH_LOCATION = "location";
     public static final String PATH_INFORMATION = "information";
     public static final String PATH_SITUATION = "situation";
-    public static final String PATH_SITUATION_LOCATION = "situationXlocation";
+    public static final String PATH_SITUATION_LOCATION = "situation_location";
 
 
 
