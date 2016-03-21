@@ -49,7 +49,7 @@ public class LocationProvider extends ContentProvider {
     private static final String sLocationInformationSelection =
             InformationEntry.TABLE_NAME+
                     "." + InformationEntry.COLUMN_LOC_KEY + " = ? ";
-    
+
     private static final String sLocationSelection = LocationEntry._ID + " = ? ";
 
     static UriMatcher buildUriMatcher() {
@@ -81,7 +81,6 @@ public class LocationProvider extends ContentProvider {
                 );
                 break;
             }case INFORMATION_WITH_LOCATION: {
-                Log.wtf("El id es ", uri.toString() );
                 Integer locationId = InformationEntry.getLocationFromURI(uri); // ya con la ubicaion solo es meter esto en el where
                 String[] join = { locationId + "" };
                 retCursor = sLocationInformationQueryBuilder.query( mOpenHelper.getReadableDatabase(),
