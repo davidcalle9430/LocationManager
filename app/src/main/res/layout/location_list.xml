@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/location_item">
-    <TextView
+
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/location_name"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="JAJAJA"
-        android:textSize="25dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/location_location"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="LALAL" />
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/pointer"
+            android:id="@+id/location_item_image"
+            android:layout_alignParentTop="true"
+            app:layout_widthPercent="30%"
+            android:scaleType="centerCrop"
+           />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/location_item_image"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_name"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="JAJAJA"
+                android:textSize="25dp"
+                app:layout_widthPercent="70%"
+               />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_location"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="LALAL" />
+        </LinearLayout>
+
+        />
+    </android.support.percent.PercentRelativeLayout>
 </LinearLayout>
