@@ -73,7 +73,7 @@ public class SituationService extends Service {
         IntentFilter timeFilter = new IntentFilter( Intent.ACTION_TIME_TICK );
         registerReceiver( timeReceiver, timeFilter );
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -86,6 +86,7 @@ public class SituationService extends Service {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver( receiver );
+        unregisterReceiver( timeReceiver );
     }
 }
 class StopServiceReceiver extends BroadcastReceiver {
