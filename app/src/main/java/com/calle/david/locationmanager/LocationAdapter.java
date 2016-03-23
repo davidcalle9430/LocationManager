@@ -55,7 +55,7 @@ public class LocationAdapter extends CursorAdapter {
                 context.startActivity( i );
             }
         });
-        view.setTag(viewHolder);
+        view.setTag( viewHolder );
         return view;
     }
 
@@ -69,7 +69,7 @@ public class LocationAdapter extends CursorAdapter {
         String description = cursor.getString( LocationEntry.COL_DESC );
         String position = positionLat + "-" + positionLon;
         viewHolder.container.setTag( R.id.ID_LOCATION_TAG , cursor.getString( LocationEntry.COL_ID ) ); // se agrega esto con el proposito de identificar que fila oprimio
-        viewHolder.locationName.setText(locationName);
+        viewHolder.locationName.setText( locationName );
         viewHolder.locationLocation.setText( description );
 
     }

@@ -67,7 +67,7 @@ public class SituationService extends Service {
 
         IntentFilter filter = new IntentFilter( STOP_SITUTATION_SERVICE );
         registerReceiver( receiver , filter );
-        currentState = "Agua!!!";
+        currentState = "Agua";
         showNotification( currentState );
 
         IntentFilter timeFilter = new IntentFilter( Intent.ACTION_TIME_TICK );
