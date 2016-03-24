@@ -49,8 +49,8 @@ public class GpsTrackerService extends Service implements LocationListener{
     // Manager de Localizacion
     protected LocationManager locationManager;
 
-    public final static String GPS_LOCATION_CHANGE_FILTER="com.calle.david.gpscambio";
-    public final static String GPS_GET_LOCATION_FILTER="com.calle.david.darcambio";
+    public final static String GPS_LOCATION_CHANGE_FILTER= "com.calle.david.locationmanager.services.gpscambio";
+    public final static String GPS_GET_LOCATION_FILTER= "com.calle.david.locationmanager.services.darcambio";
 
 
     //Constructor
@@ -59,7 +59,7 @@ public class GpsTrackerService extends Service implements LocationListener{
         getLocation();
     }
     public GpsTrackerService(){
-        Log.wtf("contructor", "varisoda");
+
     }
     // al parecer el onCreate nunca se llama
     @Override
@@ -67,7 +67,6 @@ public class GpsTrackerService extends Service implements LocationListener{
         super.onCreate();
         IntentFilter filter = new IntentFilter(GpsTrackerService.GPS_GET_LOCATION_FILTER);
         registerReceiver(new GPSChange(), filter );
-        Log.wtf("service", "creado");
     }
 
 
@@ -76,14 +75,13 @@ public class GpsTrackerService extends Service implements LocationListener{
         super.onStartCommand(intent, flags, startId);
         IntentFilter filter = new IntentFilter(GpsTrackerService.GPS_GET_LOCATION_FILTER);
         registerReceiver(new GPSChange(), filter);
-        Log.wtf("service", "creado");
+        getLocation();
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(mContext,"Servicio Muere!!", Toast.LENGTH_SHORT).show();
     }
 
     public Location getLocation(){
@@ -109,7 +107,6 @@ public class GpsTrackerService extends Service implements LocationListener{
                             LocationManager.NETWORK_PROVIDER,
                             MIN_TIME_BW_UPDATES,
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-                    Log.d("Red", "Proveedor de red");
                     if (locationManager != null) {
                         location = locationManager
                                 .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -126,7 +123,6 @@ public class GpsTrackerService extends Service implements LocationListener{
                                 LocationManager.GPS_PROVIDER,
                                 MIN_TIME_BW_UPDATES,
                                 MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-                        Log.d("GPS", "GPS Habilitado");
                         if (locationManager != null) {
                             location = locationManager
                                     .getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -140,6 +136,7 @@ public class GpsTrackerService extends Service implements LocationListener{
             }
 
         } catch (Exception e) {
+            Log.wtf("PEPE", "Error fatal");
             e.printStackTrace();
         }
 
@@ -218,7 +215,6 @@ public class GpsTrackerService extends Service implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
-        Toast.makeText(mContext,"Por fin hubo un cambio", Toast.LENGTH_SHORT).show();
         updateLocation();
     }
 
@@ -251,8 +247,8 @@ public class GpsTrackerService extends Service implements LocationListener{
     class GPSChange extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent){
-            updateLocation();
             Log.wtf("senial", "Recibo la signal");
+            updateLocation();
         }
     }
 }

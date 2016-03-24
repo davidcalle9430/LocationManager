@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void fillSpinner(){
         spinner = (Spinner) findViewById( R.id.situation_spinner );
         Cursor cursor = getContentResolver().query( LocationContract.SituationEntry.CONTENT_URI , null, null, null, null );
-        while( cursor.moveToNext() ){ situationList.add( cursor.getString( 0 ) ) ;}
+        while( cursor.moveToNext() ){ situationList.add( cursor.getString( 0 ) ); }
         ArrayAdapter< String > spinnerAdapter = new ArrayAdapter( this  , android.R.layout.simple_spinner_dropdown_item  , situationList );
         spinner.setAdapter(spinnerAdapter);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -64,9 +64,9 @@ public class LocationDBHelper extends SQLiteOpenHelper {
 
         //TODO: Inserts de las ubicaciones, el id esta dado por el orden, el primero tiene id 1 y asi sucesivamente
         // String name, String description, Double lat, Double lon, Double radio
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Fruteria", "En este punto de servicio ubicado en la Plazoleta de Arquitectura, usted podrá disfrutar de las frutas en todas sus presentaciones, desde opciones ligeras como jugos, fruta entera y porcionada, postres a base de fruta, deliciosas malteadas y smothies, hasta opciones de almuerzo ligero como nuestra completa ensalada de frutas.", 1.0, 1.0, 1.0) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria Central", "En estos puntos de auto-servicio usted podra disfrutar principalmente de opciones caseras de desayunos, almuerzos y carnes a la plancha; nuestro menu del dia es cuidadosamente  diseñado por una profesional de Nutrición quien se asegura que sea nutricionalmente balanceado y a la vez delicioso. En este espacio tambien puede darse el permiso de disfrutar de una amplia variedad de comidas rapidas como pizzas, hamburguesas, pastas y pinchos, entre otros, preparados con materias primas de muy alta calidad. Para prestarle un servicio completo en las cafeterías hemos integrado módulos de café donde al igual que en los cafes y kioscos distribuidos por el Campus usted disfrutara de nuestra pastelería, bebidas caliente, bebidas frías, sandwiches, frutas y ensaladas. Actualmente usted cuenta con las siguientes cafeterias:", 1.0, 1.0, 1.0) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Tepanyaki", "En el Teppanyaki  puedes disfrutar de un delicioso arroz japones con la posibilidad de elegir  los ingredientes que más te gustan. Verduras (apio, cebolla cabezona, pimenton rojo, zuchini amarillo y zuchini verde) y en carnes (calamar, pollo, cerdo, filete de pescado). Para vegetarianos existen las alternativas de champiñon y orellanas, todos preparados a la plancha.", 1.0, 1.0, 1.0) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Fruteria", "En este punto de servicio ubicado en la Plazoleta de Arquitectura, usted podra disfrutar de las frutas en todas sus presentaciones, desde opciones ligeras como jugos, fruta entera y porcionada, postres a base de fruta, deliciosas malteadas y smothies, hasta opciones de almuerzo ligero como nuestra completa ensalada de frutas.",4.7544972,-74.061424, 0.00009 ) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria Central", "En estos puntos de auto-servicio usted podra disfrutar principalmente de opciones caseras de desayunos, almuerzos y carnes a la plancha; nuestro menu del dia es cuidadosamente  disenado por una profesional de Nutricion quien se asegura que sea nutricionalmente balanceado y a la vez delicioso. En este espacio tambien puede darse el permiso de disfrutar de una amplia variedad de comidas rapidas como pizzas, hamburguesas, pastas y pinchos, entre otros, preparados con materias primas de muy alta calidad. Para prestarle un servicio completo en las cafeterias hemos integrado modulos de cafe donde al igual que en los cafes y kioscos distribuidos por el Campus usted disfrutara de nuestra pasteleria, bebidas caliente, bebidas frias, sandwiches, frutas y ensaladas. Actualmente usted cuenta con las siguientes cafeterias:", 4.7540483, -74.06243, 1.0) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Tenpanyaki", "En el Teppanyaki  puedes disfrutar de un delicioso arroz japones con la posibilidad de elegir  los ingredientes que mas te gustan. Verduras (apio, cebolla cabezona, pimenton rojo, zuchini amarillo y zuchini verde) y en carnes (calamar, pollo, cerdo, filete de pescado). Para vegetarianos existen las alternativas de champinon y orellanas, todos preparados a la plancha.",  4.7540483, -74.06243, 0.00005) );
         sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Giraldo", "Edificio universitario academico , tambien hay comida", 1.0 , 1.0 ,  1.0 ) );
         sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Atico", "Este proyecto denominado “ATICO” integrara recursos de la Universidad Javeriana en torno a la aplicacion de tecnologias de informacion y comunicacion ", 1.0 , 1.0 , 1.0));
         sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Parqueadero", "El servicio de parqueaderos es una unidad que busca la excelencia en la prestacion del servicio de estacionamento y seguridad de los automotores, con el fin de contribuir a la comodidad y satisfaccion de la comunidad javeriana", 1.0 , 1.0 , 1.0));
@@ -104,7 +104,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert( LocationContract.SituationXLocationEntry.TABLE_NAME , null , buildSituationXLocation( "Estudio" , (long) 7 ) );
         sqLiteDatabase.insert( LocationContract.SituationXLocationEntry.TABLE_NAME , null , buildSituationXLocation( "Estudiando" , (long) 7 ) );
 
-        //TODo:  inserts de la infromación
+        //TODo:  inserts de la infromacion
         //key, value, location id
         sqLiteDatabase.insert( InformationEntry.TABLE_NAME , null , buildInformation( "Menu" , "Batidos de fruta" , 1 ) );
         sqLiteDatabase.insert( InformationEntry.TABLE_NAME , null , buildInformation( "Menu" , "Ensalada de fruta" , 1 ) );
@@ -112,7 +112,7 @@ public class LocationDBHelper extends SQLiteOpenHelper {
 
 
     /**
-     * Por ahora lo que va a hacer este método es que cuando
+     * Por ahora lo que va a hacer este metodo es que cuando
      * haya una nueva version de la base de datos la borra y la vuelve a crear
      * @param sqLiteDatabase
      * @param oldVersion
