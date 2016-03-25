@@ -8,24 +8,60 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.calle.david.locationmanager.MenuActivity"
-    android:orientation="vertical">
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar por Situacion"
-        android:id="@+id/button_to_situation"
-        android:onClick="toSituationActivity"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar por Ubicacion"
-        android:id="@+id/button_to_location"
-        android:onClick="toGPSLocationActivity"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adivinanzas"/>
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:textSize="37dp"
+        android:layout_marginTop="10dp"
+        android:typeface="sans"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:background="@drawable/MENUPRINCIPAL" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar por Situación"
+        android:id="@+id/button_to_situation"
+        android:onClick="toSituationActivity"
+        android:background="#51ffffff"
+        android:textColor="#000000"
+        android:layout_weight="0.09"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/sitacion"
+
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar por Ubicación"
+        android:id="@+id/button_to_location"
+        android:onClick="toGPSLocationActivity"
+        android:layout_weight="0.06"
+        android:layout_marginTop="50dp"
+        android:drawableLeft="@drawable/ubicacion"
+        android:textSize="30dp"
+        android:background="#ffffff"
+        android:textColor="#1e00ff"
+        android:textStyle="bold" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adivinanzas"
+        android:drawableLeft="@drawable/interrogacion"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

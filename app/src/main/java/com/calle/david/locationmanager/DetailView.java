@@ -72,6 +72,7 @@ public class DetailView extends AppCompatActivity {
         Cursor baseData = getContentResolver().query( LocationEntry.CONTENT_URI , null , LocationEntry._ID +" = ?", queryArgs  , null);
         while( baseData.moveToNext() ){
             datos.add("   -   NOMBRE:");
+            setTitle(baseData.getString(baseData.getColumnIndex(LocationEntry.COLUMN_LOCATION_NAME)));
             datos.add(baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_LOCATION_NAME ) ));
             datos.add("   -   LONGITUD:");
             datos.add( baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_COOD_LON) ));
