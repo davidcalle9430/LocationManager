@@ -7,7 +7,14 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     >
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lati"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/longi"/>
     <ListView
         android:id="@+id/view_activity_search"
         android:layout_width="match_parent"

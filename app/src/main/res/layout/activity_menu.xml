@@ -23,7 +23,7 @@
         android:typeface="sans"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:background="@drawable/MENUPRINCIPAL" />
+        android:background="@drawable/menuprincipal" />
 
     <Button
         android:layout_width="match_parent"
@@ -61,7 +61,8 @@
         android:layout_marginTop="50dp"
         android:background="#ffffff"
         android:textColor="#000000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="toGamificationActivity"/>
 
 
 </LinearLayout>

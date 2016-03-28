@@ -55,7 +55,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void getCurrentLocation(){
-        sendBroadcast(new Intent (GpsTrackerService.GPS_GET_LOCATION_FILTER ));
+        sendBroadcast(new Intent(GpsTrackerService.GPS_GET_LOCATION_FILTER));
     }
 
     public void searchNearLocations( float lat , float lon ) {
@@ -63,13 +63,19 @@ public class SearchActivity extends AppCompatActivity {
         float latitudRight = lat + RANGE;
         float longitudeUp = lon + RANGE;
         float longitudeDown = lon - RANGE;
-        String where = LocationEntry.COLUMN_COOD_LON + "+"+ LocationEntry.COLUMN_RADIO + ">" +longitudeDown + " AND " +
+        final String where = LocationEntry.COLUMN_COOD_LON + "+"+ LocationEntry.COLUMN_RADIO + ">" +longitudeDown + " AND " +
                 LocationEntry.COLUMN_COOD_LON + "-"+LocationEntry.COLUMN_RADIO + "<" +longitudeUp + " AND " +
                 LocationEntry.COLUMN_COORD_LAT + "+"+ LocationEntry.COLUMN_RADIO + ">" +latitudLeft + " AND " +
                 LocationEntry.COLUMN_COORD_LAT + "-"+ LocationEntry.COLUMN_RADIO + "<" +latitudRight;
         Cursor cursor = getContentResolver().query( LocationContract.LocationEntry.CONTENT_URI, null, where ,null, null );
         mAdapter = new LocationAdapter( getApplicationContext(), cursor , 0 );
         listView.setAdapter( mAdapter );
+    }
+
+
+    public void updateTextViews(String lat , String lon){
+        /*((TextView) findViewById( R.id.lati )).setText( "Latitud: "+ lat );
+        ((TextView) findViewById( R.id.longi )).setText( "Longitud: " + lon );*/
     }
 
     class GPSChange extends BroadcastReceiver {
@@ -79,6 +85,7 @@ public class SearchActivity extends AppCompatActivity {
             float latitude = Float.parseFloat( intent.getStringExtra( "Lat" ) );
             float longitude = Float.parseFloat( intent.getStringExtra( "Lon" ) );
             searchNearLocations( latitude, longitude );
+            updateTextViews( latitude + "" , longitude + "" );
         }
     }
 }

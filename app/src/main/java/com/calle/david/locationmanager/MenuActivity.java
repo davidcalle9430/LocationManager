@@ -15,11 +15,15 @@ public class MenuActivity extends AppCompatActivity {
 
     public void toSituationActivity(View view){
         Intent intent = new Intent( this , MainActivity.class );
-        startActivity( intent );
+        startActivity(intent);
     }
 
     public void toGPSLocationActivity(View view){
         Intent intent = new Intent( this , SearchActivity.class );
+        startActivity( intent );
+    }
+    public void toGamificationActivity(View view){
+        Intent intent = new Intent( this , Gamification.class );
         startActivity( intent );
     }
 }

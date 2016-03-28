@@ -19,7 +19,7 @@ import java.util.Calendar;
 public class SituationService extends Service {
     public final static String[] STATES = { "Estudiando" , "Comida" , "Transporte" };
     public final static String STOP_SITUTATION_SERVICE = "com.movil.sagrado.corazon.parar.situacion";
-
+    public final static Integer NOTIFICATION_ID =  12345;
     private StopServiceReceiver receiver;
     private TimeChangeReceiver timeReceiver;
     private String currentState;
@@ -40,7 +40,7 @@ public class SituationService extends Service {
         targetIntent.putExtra( MainActivity.SITUATION_EXTRA , currentState );
         Intent stopService = new Intent( STOP_SITUTATION_SERVICE );
         PendingIntent stop = PendingIntent.getBroadcast(this, 0, stopService, PendingIntent.FLAG_UPDATE_CURRENT );
-        PendingIntent contentIntent = PendingIntent.getActivity( this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT );
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT );
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
@@ -48,7 +48,6 @@ public class SituationService extends Service {
                         .setContentTitle("Buscando: " + state)
                         .setContentText( "El estado es " + state )
                         .addAction( R.drawable.common_ic_googleplayservices  , "Parar", stop  );
-        int NOTIFICATION_ID = 12345;
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         builder.setStyle( inboxStyle );
@@ -56,7 +55,7 @@ public class SituationService extends Service {
 
 
         builder.setContentIntent(contentIntent);
-        NotificationManager nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager nManager = (NotificationManager) getSystemService( Context.NOTIFICATION_SERVICE );
         nManager.notify( NOTIFICATION_ID, builder.build() );
     }
     @Override
@@ -67,7 +66,7 @@ public class SituationService extends Service {
 
         IntentFilter filter = new IntentFilter( STOP_SITUTATION_SERVICE );
         registerReceiver( receiver , filter );
-        currentState = "Agua";
+        currentState = "Agua"; // esto para ver el cambio de manera practica
         showNotification( currentState );
 
         IntentFilter timeFilter = new IntentFilter( Intent.ACTION_TIME_TICK );
@@ -78,7 +77,6 @@ public class SituationService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -97,10 +95,15 @@ class StopServiceReceiver extends BroadcastReceiver {
     }
     @Override
     public void onReceive(Context context, Intent intent){
+        NotificationManager notificationManager = (NotificationManager) service.getSystemService( Context.NOTIFICATION_SERVICE );
+        notificationManager.cancel( SituationService.NOTIFICATION_ID );
         service.stopSelf();
     }
 }
 
+/**
+ * Esta clase se encarga de cambiar la situacion, la situacion depende de la hora del dia
+ */
 class TimeChangeReceiver extends BroadcastReceiver {
     private SituationService service;
 
@@ -110,7 +113,6 @@ class TimeChangeReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
         int hour = Calendar.getInstance().get( Calendar.HOUR_OF_DAY );
-        Log.wtf( "Tiempo", "Hubo un cambio en el tiempo " + hour );
         if( hour > 0 && hour < 11 ){
             service.setState( "Estudiando" );
         }else if( hour >= 11 && hour < 12 ){

@@ -20,7 +20,6 @@ import android.widget.Toast;
  * An {@link IntentService} subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
  * <p/>
- * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
 public class GpsTrackerService extends Service implements LocationListener{
@@ -76,7 +75,7 @@ public class GpsTrackerService extends Service implements LocationListener{
         IntentFilter filter = new IntentFilter(GpsTrackerService.GPS_GET_LOCATION_FILTER);
         registerReceiver(new GPSChange(), filter);
         getLocation();
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -136,7 +135,6 @@ public class GpsTrackerService extends Service implements LocationListener{
             }
 
         } catch (Exception e) {
-            Log.wtf("PEPE", "Error fatal");
             e.printStackTrace();
         }
 
@@ -247,7 +245,6 @@ public class GpsTrackerService extends Service implements LocationListener{
     class GPSChange extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent){
-            Log.wtf("senial", "Recibo la signal");
             updateLocation();
         }
     }

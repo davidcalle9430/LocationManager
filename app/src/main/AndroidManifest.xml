@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:label="Detector DMD"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <provider
             android:name=".data.LocationProvider"
@@ -36,9 +37,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SearchActivity">
-
-        </activity>
+        <activity android:name=".SearchActivity"></activity>
 
         <service
             android:name=".services.GpsTrackerService"
@@ -51,6 +50,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Gamification"
+            android:screenOrientation="portrait">
+
         </activity>
     </application>
 
