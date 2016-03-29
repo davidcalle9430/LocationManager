@@ -74,7 +74,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
     public void updateTextViews(String lat , String lon){
-        /*((TextView) findViewById( R.id.lati )).setText( "Latitud: "+ lat );
+     /*   ((TextView) findViewById( R.id.lati )).setText( "Latitud: "+ lat );
         ((TextView) findViewById( R.id.longi )).setText( "Longitud: " + lon );*/
     }
 

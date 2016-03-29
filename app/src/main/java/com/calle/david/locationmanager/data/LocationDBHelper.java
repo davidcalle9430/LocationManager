@@ -64,21 +64,21 @@ public class LocationDBHelper extends SQLiteOpenHelper {
         final double m_degree = 111320;
         //TODO: Inserts de las ubicaciones, el id esta dado por el orden, el primero tiene id 1 y asi sucesivamente
         // String name, String description, Double lat, Double lon, Double radio
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Gabriel Giraldo", "Edificio de la facultad de derecho",4.626998, -74.064822 ,(double) 200 / m_degree ) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Fernando Baron", "Edificio para clases de diversas facultades, tiene cafeteria", 4.626775 , -74.064049 ,  (double)  100 / m_degree) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Rafael Arboleda", "Edificio que queda cerca de parqueaderos", 4.628626 , -74.062848 ,  (double) 40 / m_degree ) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Gabriel Maldonado", "Edificio de la facultad de ingenieria industrial, civil, eletrectronica y de sistemas", 4.62713 ,-74.064145 , (double) 100 / m_degree ) );
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Biblioteca Alfonso Borrero", "Abierta 24 horas para las personas de la comunidad Javeriana ", 4.628807 , -74.064550 , (double) 100 / m_degree  ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Jesus Ramirez", "Otro edificio de la universidad", 4.630979 , -74.063770 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Centro Atico", "El proyecto atico, es uno de tecnologias de informacion de la universidad", 4.626924 , -74.065147 ,(double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Biblioteca de Filosofia", "Biblioteca alterna de la universidad ", 4.626216 , -74.063296 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Restaurante el Mirador", "Restaurante de alto costo de la universidad ", 4.626445 , -74.064767 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafe el Alcaparro", "Venta de ricos cafes ", 4.626526 , -74.062886 ,(double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria Central", "Cafeteria de almuerzos caseros en la universidad ", 4.628204 , -74.064545 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("La creperia", "Ricos crepes como alternativa de comida ", 4.627354 , -74.062659 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Tepanyaki", "Restaurante y cateria frente al edificio baron ", 4.626834 , -74.063762 ,(double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria HUSI", "Descansa y tomate algo aca ", 4.627818 , -74.064432 , (double) 100 / m_degree ));
-        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("La conejera", "Sucursal de OMA ", 4.628723 , -74.063401 , (double) 100 / m_degree  ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Gabriel Giraldo", "Edificio de la facultad de derecho",4.6269336, -74.06496,(double) 20 / m_degree ) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Fernando Baron", "Edificio para clases de diversas facultades, tiene cafeteria", 4.6266522, -74.06407 ,  (double)  16 / m_degree) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Rafael Arboleda", "Edificio que queda cerca de parqueaderos", 4.628762 , -74.062827 ,  (double) 25 / m_degree ) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Gabriel Maldonado", "Edificio de la facultad de ingenieria industrial, civil, eletrectronica y de sistemas", 4.626978 ,-74.064081 , (double) 27 / m_degree ) );
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Biblioteca Alfonso Borrero", "Abierta 24 horas para las personas de la comunidad Javeriana ", 4.6289625 , -74.064896 , (double) 30 / m_degree  ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Edificio Jesus Ramirez", "Otro edificio de la universidad", 4.630642 , -74.064, (double) 15 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Centro Atico", "El proyecto atico, es uno de tecnologias de informacion de la universidad", 4.626924 , -74.065147 ,(double) 20 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Biblioteca de Filosofia", "Biblioteca alterna de la universidad ", 4.626216 , -74.063296 , (double) 15 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Restaurante el Mirador", "Restaurante de alto costo de la universidad ", 4.626445 , -74.064767 , (double) 15 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafe el Alcaparro", "Venta de ricos cafes ", 4.626526 , -74.062886 ,(double) 10 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria Central", "Cafeteria de almuerzos caseros en la universidad ",4.6280947 , -74.064766 , (double) 20 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("La creperia", "Ricos crepes como alternativa de comida ", 4.627354 , -74.062659 , (double) 20 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Tepanyaki", "Restaurante y cateria frente al edificio baron ",4.626713 , -74.06409 ,(double) 8 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Cafeteria HUSI", "Descansa y tomate algo aca ", 4.6281724 , -74.064443 , (double) 15 / m_degree ));
+        sqLiteDatabase.insert( LocationEntry.TABLE_NAME , null , buildLocation("Artes", "Facultad de artes ", 4.6267 , -74.06413 , (double) 35 / m_degree  ));
         //TODO: Inserts de las Situaciones
         sqLiteDatabase.insert( LocationContract.SituationEntry.TABLE_NAME , null , buildSituation("Agua") );
         sqLiteDatabase.insert( LocationContract.SituationEntry.TABLE_NAME , null , buildSituation( "Transporte" ) );

@@ -43,7 +43,7 @@ public class GpsTrackerService extends Service implements LocationListener{
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 metros
 
     // Tiempo minimo de actualizacion por tiempo
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 5; // 5 segundos
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 1; // 5 segundos
 
     // Manager de Localizacion
     protected LocationManager locationManager;
@@ -126,7 +126,7 @@ public class GpsTrackerService extends Service implements LocationListener{
                             location = locationManager
                                     .getLastKnownLocation(LocationManager.GPS_PROVIDER);
                             if (location != null) {
-                                latitude = location.getLatitude();
+
                                 longitude = location.getLongitude();
                             }
                         }
