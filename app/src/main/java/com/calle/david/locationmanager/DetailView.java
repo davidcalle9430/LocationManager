@@ -57,7 +57,7 @@ public class DetailView extends AppCompatActivity {
         listaView = (ListView) findViewById(R.id.listView);
 
         ImageView image= (ImageView)findViewById(R.id.imageView);
-        image.setImageResource(R.mipmap.ingenieria);
+        image.setImageResource(R.drawable.javeriana);
 
         Intent i = getIntent();
         String locationId = i.getStringExtra(MainActivity.ID_LOCATION);
