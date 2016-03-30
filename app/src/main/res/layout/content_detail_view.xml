@@ -25,10 +25,24 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="160dp"
+        android:layout_height="100dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/listView" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Cómo llegar?"
+        android:id="@+id/button"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="viewInGoogleMaps"
+        android:drawableLeft="@drawable/googlemaps"
+        android:background="#ffffff"
+        android:textColor="#001efe"
+        android:textSize="25dp" />
 
 
 </RelativeLayout>

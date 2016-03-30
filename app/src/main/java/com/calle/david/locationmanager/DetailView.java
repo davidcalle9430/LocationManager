@@ -41,11 +41,9 @@ public class DetailView extends AppCompatActivity {
     private ListView listaView;
     private List<String> datos;
     private ArrayAdapter<String> adaptador;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +71,13 @@ public class DetailView extends AppCompatActivity {
         while( baseData.moveToNext() ){
             datos.add("   -   NOMBRE:");
             setTitle(baseData.getString(baseData.getColumnIndex(LocationEntry.COLUMN_LOCATION_NAME)));
-            datos.add(baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_LOCATION_NAME ) ));
+            datos.add(baseData.getString(baseData.getColumnIndex(LocationEntry.COLUMN_LOCATION_NAME)));
             datos.add("   -   LONGITUD:");
             datos.add( baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_COOD_LON) ));
             datos.add("   -   LATITUD:");
             datos.add(baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_COORD_LAT ) ));
+            lat =  baseData.getString(baseData.getColumnIndex(LocationEntry.COLUMN_COORD_LAT));
+            lon =  baseData.getString(baseData.getColumnIndex(LocationEntry.COLUMN_COOD_LON));
             datos.add("   -   DESCRIPCION:");
             datos.add( baseData.getString( baseData.getColumnIndex( LocationEntry.COLUMN_DESCRIPTION ) ));
             datos.add("   -   RADIO DE BUSQUEDA:");
@@ -109,49 +109,25 @@ public class DetailView extends AppCompatActivity {
         }
         };
         listaView.setAdapter(adaptador);
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+       // viewInGoogleMaps();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "DetailView Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.calle.david.locationmanager/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        // map intent
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "DetailView Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.calle.david.locationmanager/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+    }
+
+    public void viewInGoogleMaps(View v){
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+lat+"," +lon+"&mode=w");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 }
